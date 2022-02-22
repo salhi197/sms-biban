@@ -23,9 +23,9 @@ function send_sms(telephone,message,res){
 }
 app.listen(port);
 app.get('/sms', timeout('15s'),bodyParser.json(),haltOnTimedout,function(params,res){
-  // var telephone = params.query.telephone
-  // var message = params.query.message
-  // send_sms(telephone,message,res)
+  var telephone = params.query.telephone
+  var message = params.query.message
+  send_sms(telephone,message,res)
   res.send("error")
   
 });
