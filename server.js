@@ -25,7 +25,8 @@ app.listen(port);
 app.get('/sms', timeout('15s'),bodyParser.json(),haltOnTimedout,function(params,res){
   var telephone = params.query.telephone
   var message = params.query.message
-  
+  res.send(message,telephone)
+
   var url = 'http://sms.icosnet.com:8080/bulksms/bulksms?username=BIBAN_FRET&password=SMS3265&type=0&dlr=1&destination=213794498727&source=BIBAN%20FRET&message='+message
   axios.get(url)
   .then(function (response) {
